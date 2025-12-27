@@ -11,9 +11,9 @@ def format_value(value, decimals):
     Floats has 'decimals' number of decimals.
     """
     
-    if isinstance(value, (float, np.float)):
+    if isinstance(value, (float, float)):
         return f'{value:.{decimals}f}'
-    elif isinstance(value, (int, np.integer)):
+    elif isinstance(value, (int, int)):
         return f'{value:d}'
     else:
         return f'{value}'
@@ -29,7 +29,7 @@ def values_to_string(values, decimals):
     for value in values:
         if isinstance(value, list):
             tmp = [format_value(val, decimals) for val in value]
-            res.append(f'{tmp[0]} +/- {tmp[1]}')
+            res.append(f'{tmp[0]} \u00B1 {tmp[1]}')
         else:
             res.append(format_value(value, decimals))
     return res
